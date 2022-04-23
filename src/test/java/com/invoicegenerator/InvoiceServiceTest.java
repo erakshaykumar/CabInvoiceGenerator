@@ -4,11 +4,11 @@
  * Take In Multiple Rides,And Calculate The Aggregate Total For All
  * Return The Following As A Part Of Invoice:-
  * Total Number Of Rides, Total Fare, Average Fare Per ride
+ * Given User ID, Invoice Service Gets List Of Rides From Ride Repository, Returns Invoice.
  * @File: Cab Invoice Generator
  * @Author: Akshay Kumar
  */
 package com.invoicegenerator;
-
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -39,7 +39,7 @@ public class InvoiceServiceTest {
     }
 
     /**
-     * Rigorous Test :- Given Multiple Rides Return Total Fare Equality Check
+     * Rigorous Test :- Given Multiple Rides Return Invoice Summary Equality Check
      */
     @Test
     public void givenMultipleRides_ShouldReturnInvoiceSummary() {
@@ -49,4 +49,24 @@ public class InvoiceServiceTest {
         InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
         Assert.assertEquals(expectedInvoiceSummary, summary);
     }
+
+    /**
+     * Rigorous Test :- Given User And Rides Return Invoice Summary Check
+     */
+    @Test
+    public void givenUserAndRides_ShouldReturnInvoiceSummary() {
+        String user1 = "Akshay";
+        Ride[] rides = {new Ride(2.0, 5),
+                new Ride(0.1, 1)};
+        invoiceService.addRides(user1, rides);
+        String user2 = "Kumar";
+        Ride[] rides1 = {new Ride(2.0, 5),
+                new Ride(0.1, 1)};
+        invoiceService.addRides(user2, rides1);
+        InvoiceSummary summary = invoiceService.getInvoiceService(user1);
+        InvoiceSummary expectedInvoiceSummary = new InvoiceSummary(2, 30.0);
+        Assert.assertEquals(expectedInvoiceSummary, summary);
+
+    }
+
 }

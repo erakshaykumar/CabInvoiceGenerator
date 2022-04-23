@@ -4,6 +4,7 @@
  * Take In Multiple Rides,And Calculate The Aggregate Total For All
  * Return The Following As A Part Of Invoice:-
  * Total Number Of Rides, Total Fare, Average Fare Per ride
+ * Given User ID, Invoice Service Gets List Of Rides From Ride Repository, Returns Invoice.
  * @File: Cab Invoice Generator
  * @Author: Akshay Kumar
  */
