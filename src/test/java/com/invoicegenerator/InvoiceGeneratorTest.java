@@ -5,6 +5,7 @@
  */
 package com.invoicegenerator;
 
+
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -20,5 +21,16 @@ public class InvoiceGeneratorTest {
         int time = 5;
         double fare = invoicegenerator.calculateFare(distance, time);
         Assert.assertEquals(25, fare, 0.0);
+    }
+
+    /**
+     * Rigorous Test :- Given Less Distance And Less Time Return Minimum Fare Equality Check
+     */
+    @Test
+    public void givenLessDistanceAndTimeShouldReturnMinimumFare() {
+        double distance = 0.1;
+        int time = 1;
+        double fare = invoicegenerator.calculateFare(distance, time);
+        Assert.assertEquals(5, fare, 0.0);
     }
 }
