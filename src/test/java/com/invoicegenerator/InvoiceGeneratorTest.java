@@ -1,5 +1,6 @@
 /**@Purpose: Given Distance And Time, The Invoice Generator Should Return The Total Fare For The Journey
  * Cost- Rs 10 Per KiloMeter + Rs 1 Per Minute. Minimum Fare- Rs 5
+ * Take In Multiple Rides,And Calculate The Aggregate Total For All
  * @File: Cab Invoice Generator
  * @Author: Akshay Kumar
  */
@@ -32,5 +33,15 @@ public class InvoiceGeneratorTest {
         int time = 1;
         double fare = invoicegenerator.calculateFare(distance, time);
         Assert.assertEquals(5, fare, 0.0);
+    }
+
+    /**
+     * Rigorous Test :- Given Multiple Rides Return Total Fare Equality Check
+     */
+    @Test
+    public void givenMultipleRidesShouldReturnTotalFare() {
+        Ride[] rides = {new Ride(2.0, 5), new Ride(0.1, 1)};
+        double fare = invoicegenerator.calculateFare(rides);
+        Assert.assertEquals(30, fare, 0.0);
     }
 }
